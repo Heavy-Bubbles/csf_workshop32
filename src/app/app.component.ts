@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Task } from './task';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'csf_workshop32';
+  title = 'To Do List';
+
+  receivedTasks: Task[] = [];
+
+  receiveTask(event: Task){
+    this.receivedTasks.push(event);
+  }
 }

@@ -1,0 +1,17 @@
+<h1>Task</h1>
+<table border="1">
+    <thead>
+        <th>S/N</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Due</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of toDoList; index as i">
+            <td>{{i + 1}}</td>
+            <td class="description">{{task.description}}</td>
+            <td class="priority">{{task.priority}}</td>
+            <td>{{task.due}}</td>
+        </tr>
+    </tbody>
+</table>
