@@ -1,2 +1,5 @@
 <app-to-do-form (onAdd)="receiveTask($event)"></app-to-do-form>
-<app-task-list [toDoList]="receivedTasks"></app-task-list>
+<app-task-list [toDoList]="receivedTasks" (onEdit)="editTask($event)"></app-task-list>
+<div *ngIf="toEdit != null">
+    <app-edit-task [toEdit]="toEdit" (onEdit)="updateTask($event)"></app-edit-task>
+</div>

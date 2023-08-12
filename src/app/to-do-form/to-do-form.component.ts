@@ -15,7 +15,7 @@ export class ToDoFormComponent implements OnInit{
   ngOnInit() {
     this.toDoForm = this.fb.group({
       description: this.fb.control<string>('', [Validators.required, Validators.minLength(5)]),
-      priority: this.fb.control<string>('low', Validators.required),
+      priority: this.fb.control<string>('low', [Validators.required]),
       due: this.fb.control<Date>(new Date(), [Validators.required, this.dateValidator])
     })
   }
@@ -38,7 +38,8 @@ export class ToDoFormComponent implements OnInit{
     let task = <Task>({
       description: form.get('description')?.value,
       priority: form.get('priority')?.value,
-      due: form.get('due')?.value
+      due: form.get('due')?.value,
+      done: false
     })
     this.onAdd.emit(task);
   }

@@ -1,5 +1,6 @@
 export interface Task {
-    description: String,
-    priority: String,
+    description: string,
+    priority: string,
     due: Date
+    done: boolean
 }

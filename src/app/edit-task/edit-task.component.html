@@ -1,0 +1,32 @@
+<h1>Edit Task</h1>
+<form [formGroup]="editForm">
+    Description: <input type="text" name="description" formControlName="description">
+    <div *ngIf="editForm.get('description')?.hasError('required')">
+        Description is required
+    </div>
+    <div *ngIf="editForm.get('description')?.hasError('minlength')">
+        Description must be at least 5 letters.
+    </div>
+    <br>
+    <br>
+    Priority: 
+    <input type="radio" name="priority" value="high" formControlName="priority">High
+    <input type="radio" name="priority" value="medium" formControlName="priority">Medium
+    <input type="radio" name="priority" value="low" formControlName="priority">Low
+    <div *ngIf="editForm.controls['priority'].errors?.['required']">
+        Priority is required.
+    </div>
+    <br>
+    <br>
+    Due:
+    <input type="date" name="due" formControlName="due">
+    <div *ngIf="editForm.get('due')?.hasError('required')">
+        Due date is required.
+    </div>
+    <div *ngIf="editForm.get('due')?.hasError('invalidDate')">
+        Due date cannot be in the past.
+    </div>
+    <br>
+    <br>
+    <button (click)="edit(editForm)" [disabled]="editForm.invalid">Save Changes</button>
+</form>

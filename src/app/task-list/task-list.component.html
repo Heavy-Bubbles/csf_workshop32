@@ -6,12 +6,16 @@
         <th>Priority</th>
         <th>Due</th>
     </thead>
-    <tbody>
-        <tr *ngFor="let task of toDoList; index as i">
-            <td>{{i + 1}}</td>
-            <td class="description">{{task.description}}</td>
-            <td class="priority">{{task.priority}}</td>
-            <td>{{task.due}}</td>
-        </tr>
+    <tbody *ngFor="let task of toDoList; index as i">
+            <tr *ngIf="!task.done">
+                <td>{{i + 1}}</td>
+                <td class="description">{{task.description}}</td>
+                <td class="priority">{{task.priority}}</td>
+                <td>{{task.due}}</td>
+                <td><Button (click)="markComplete(task)">Mark as Complete</Button></td>
+                <td><button (click)="deleteTask(task)">Delete</button></td>
+                <td><button (click)="editTask(task)">Edit</button></td>
+            </tr>
     </tbody>
 </table>
+
